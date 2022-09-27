@@ -1,6 +1,6 @@
 package ZalfyPutraRezkyJSleepRJ;
 
-public class Voucher
+public class Voucher extends Serializable
 {
     public Type type;
     public double cut;
@@ -9,6 +9,15 @@ public class Voucher
     public double minimum;
     private boolean used;
     
+    public Voucher(int id, String name, int code, Type type, boolean used, double minimum, double cut){
+        super(id);
+        this.name = name;
+        this.code = code;
+        this.type = type;
+        this.minimum = minimum;
+        this.cut = cut;
+    }
+    /*
     public Voucher(String name, int code, Type type, double minimum, double cut){
         this.name = name;
         this.code = code;
@@ -16,6 +25,7 @@ public class Voucher
         this.minimum = minimum;
         this.cut = cut;
     }
+    */
     public boolean canApply(Price price){
         if(price.price > this.minimum && this.used == false)
             return true;

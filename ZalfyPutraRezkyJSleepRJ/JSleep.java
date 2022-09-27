@@ -2,13 +2,19 @@ package ZalfyPutraRezkyJSleepRJ;
 
 public class JSleep{
     public static void main(String[] args){
+        Payment testRoom = new Payment(1, 1, 1, "", 1, "", "");
+        Invoice testInvoice = new Invoice(2,2,2, "");
+        System.out.println(testRoom.print());
+        System.out.println(testInvoice.print());
+    }
+    /*
+    public static void main(String[] args){
         Room run = createRoom();
         System.out.println(run.name);
         System.out.println(run.size);
         System.out.println(run.price.price);
         System.out.println(run.facility);
     }
-    /*
     public static int getHotelId(){
         return 0;
     }
@@ -43,10 +49,10 @@ public class JSleep{
         int total = price * numberOfNight;
         return (total + getAdminFee(total));
     }
-    */
     public static Room createRoom(){
         Price price = new Price(100000,5);
         Room room = new Room("hotel", 30, price, Facility.AC);
         return room;
     }
+    */
 }
