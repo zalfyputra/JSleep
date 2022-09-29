@@ -2,10 +2,18 @@ package ZalfyPutraRezkyJSleepRJ;
 
 public class Invoice extends Serializable
 {
+    public PaymentStatus status = PaymentStatus.WAITING;
+    public RoomRating rating = RoomRating.NONE;
     public int buyerId;
     public int renterId;
     public String time;
     
+    public enum RoomRating{
+        NONE, BAD, NEUTRAL, GOOD
+    }
+    public enum PaymentStatus{
+        FAILED, WAITING, SUCCESS
+    }
     protected Invoice(int id, int buyerId, int renterId, String time){
         super(id);
         this.buyerId = buyerId;

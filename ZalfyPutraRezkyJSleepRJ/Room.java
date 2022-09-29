@@ -6,21 +6,20 @@ public class Room extends Serializable
     public String name;
     public Facility facility;
     public Price price;
+    public BedType bedType;
+    public City city;
     
-    public Room(int id, String name, int size, Price price, Facility facility){
+    public Room(int id, String name, int size, Price price, Facility facility, City city, String address){
         super(id);
         this.name = name;
         this.size = size;
         this.price = price;
         this.facility = facility;
+        this.bedType = BedType.SINGLE;
+        this.city = city;
     }
-    
-    /*
-    public Room(String name, int size, Price price, Facility facility){
-        this.size = size;
-        this.name = name;
-        this.price = price;
-        this.facility = facility;
+    public String toString(){
+        return "id = " + this.id + "\n" + "name = " + this.name + "\n" + "size = " + this.size + "\n" + this.price + "\n" +
+        "facility = " + this.facility + "\n" + "bedType = " + this.bedType + "\n" + "city = " + this.city;
     }
-    */
 }

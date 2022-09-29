@@ -3,17 +3,19 @@ package ZalfyPutraRezkyJSleepRJ;
 public class Price{
     public double price;
     public double discount;
+    public double rebate;
     
+    /*
     public Price(double price){
         
     }
     public Price(double price,double discount){
         
     }
-    /*
-    public double rebate;
-    public double price;
-    public int discount;
+    */
+    public String toString(){
+        return "price = " + this.price + "\n" + "discount = " + this.discount;
+    }
     
     public Price(double price){
         this.price = price;
@@ -42,5 +44,4 @@ public class Price{
         else
             return this.price - this.rebate;
     }
-    */
 }

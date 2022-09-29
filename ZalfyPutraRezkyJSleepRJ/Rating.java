@@ -9,6 +9,9 @@ public class Rating
         this.total = 0;
         this.count = 0;
     }
+    public String toString(){
+        return "total = " + this.total + "\n" + "count = " + this.count;
+    }
     public void insert(int rating){
         this.total += rating;
         this.count++;
