@@ -1,6 +1,6 @@
 package ZalfyPutraRezkyJSleepRJ;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class Invoice extends Serializable
 {
@@ -8,7 +8,7 @@ public class Invoice extends Serializable
     public RoomRating rating = RoomRating.NONE;
     public int buyerId;
     public int renterId;
-    public Calendar time = Calendar.getInstance();
+    public Date time = new Date();
     
     public enum RoomRating{
         NONE, BAD, NEUTRAL, GOOD
@@ -23,12 +23,12 @@ public class Invoice extends Serializable
     }
     public Invoice(int id, Account buyer, Renter renter){
         super(id);
-        this.buyerId = buyer. id;
+        this.buyerId = buyer.id;
         this.renterId = renter.id;
     }
     public String print(){
-        return "buyerId = " + this.buyerId 
-                + "\n" + "renterId = " + this.renterId
-                + "\n" + "time = " + this.time + "\n";
+        return "Buyer ID: " + this.buyerId + "\n"
+             + "Renter ID: " + this.renterId + "\n"
+             + "Time: " + this.time + "\n";
     }
 }

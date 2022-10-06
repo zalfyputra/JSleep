@@ -1,13 +1,18 @@
 package ZalfyPutraRezkyJSleepRJ;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Room extends Serializable implements FileParser
 {
     public int size;
     public String name;
+    public String address;
     public Facility facility;
     public Price price;
     public BedType bedType;
     public City city;
+    public ArrayList <Date> booked = new ArrayList <Date>();
     
     public Room(int id, String name, int size, Price price, Facility facility, City city, String address){
         super(id);
@@ -17,6 +22,7 @@ public class Room extends Serializable implements FileParser
         this.facility = facility;
         this.bedType = BedType.SINGLE;
         this.city = city;
+        this.address = address;
     }
     public String toString(){
         return "id = " + this.id + "\n" + "name = " + this.name + "\n" + "size = " + this.size + "\n" + this.price + "\n" +
