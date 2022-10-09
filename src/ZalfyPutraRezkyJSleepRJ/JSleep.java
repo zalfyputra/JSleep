@@ -5,6 +5,8 @@ import java.sql.Date;
 public class JSleep
 {
     public static void main(String[] args){
+        System.out.println("Hello from IntelliJ!");
+        /*
         Room RoomA = JSleep.createRoom();
         Room RoomB = JSleep.createRoom();
         System.out.println("Membuat booking dari tanggal 15 hingga 18");
@@ -19,7 +21,6 @@ public class JSleep
         Date start3 = Date.valueOf("2022-8-18");
         Date end3 = Date.valueOf("2022-8-20");
         System.out.println(Payment.makeBooking(start3, end3,RoomB));
-        /*
         System.out.println("Membuat booking dari tanggal 20 hingga 15");
         Date start = Date.valueOf("2022-8-20");
         Date end = Date.valueOf("2022-8-15");

@@ -56,4 +56,5 @@ public class Voucher extends Serializable implements FileParser
     }
     public boolean read(String parse){
         return false;
+    }
 }
