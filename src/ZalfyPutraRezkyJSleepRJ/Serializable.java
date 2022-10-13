@@ -13,7 +13,6 @@ public class Serializable
         else
             temp++;
         this.id = temp;
-        System.out.println("ID: " + id);
         mapCounter.put(this.getClass(), temp);
     }
     public int compareTo(Serializable serial){
