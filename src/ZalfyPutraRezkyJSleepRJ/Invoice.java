@@ -16,12 +16,12 @@ public class Invoice extends Serializable
     public enum PaymentStatus{
         FAILED, WAITING, SUCCESS
     }
-    protected Invoice(int id, int buyerId, int renterId){
+    protected Invoice(int buyerId, int renterId){
         this.buyerId = buyerId;
         this.renterId = renterId;
         this.time = time;
     }
-    public Invoice(int id, Account buyer, Renter renter){
+    public Invoice(Account buyer, Renter renter){
         this.buyerId = buyer.id;
         this.renterId = renter.id;
         this.time = time;
