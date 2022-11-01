@@ -3,9 +3,10 @@ package ZalfyPutraRezkyJSleepRJ;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Room extends Serializable implements FileParser
+public class Room extends Serializable
 {
     public int size;
+    public int accountId;
     public String name;
     public String address;
     public Facility facility;
@@ -14,7 +15,8 @@ public class Room extends Serializable implements FileParser
     public City city;
     public ArrayList <Date> booked = new ArrayList <Date>();
     
-    public Room(String name, int size, Price price, Facility facility, City city, String address){
+    public Room(int accountId, String name, int size, Price price, Facility facility, City city, String address){
+        this.accountId = accountId;
         this.name = name;
         this.size = size;
         this.price = price;

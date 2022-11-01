@@ -2,24 +2,18 @@ package ZalfyPutraRezkyJSleepRJ;
 
 public class Renter extends Serializable
 {
-    public int phoneNumber = 0;
-    public String address = "";
+    public String phoneNumber;
+    public String address;
     public String username;
+    final public static String REGEX_NAME = "^[A-Z][a-zA-Z0-9_]{4,20}$";
+    final public static String REGEX_PHONE = "[0-9]{9,12}";
     
-    public Renter(int id, String username){
-        this.username = username;
-    }
-    public Renter(int id, String username, String address){
-        this.username = username;
-        this.address = address;
-    }
-    public Renter(int id, String username, int phoneNumber){
-        this.username = username;
-        this.phoneNumber = phoneNumber;
-    }
-    public Renter(int id, String username, int phoneNumber, String address){
+    public Renter(String username, String phoneNumber, String address){
         this.username = username;
         this.phoneNumber = phoneNumber;
         this.address = address;
+    }
+    public boolean validate() {
+        return this.username.matches(REGEX_NAME) && this.phoneNumber.matches(REGEX_PHONE);
     }
 }
