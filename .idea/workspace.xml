@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f227e8e-696f-49d3-9d26-7f60e914c829" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/ThreadingObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JSleep/ZalfyPutraRezkyJSleepRJ/JSleep.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JSleep/ZalfyPutraRezkyJSleepRJ/JSleep.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/FileParser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/JSleep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/JSleep.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/Renter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/Renter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/Voucher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ZalfyPutraRezkyJSleepRJ/Voucher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/city.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +90,8 @@
       <workItem from="1665671361132" duration="5793000" />
       <workItem from="1667104720995" duration="2304000" />
       <workItem from="1667107058616" duration="5000" />
-      <workItem from="1667293189083" duration="6802000" />
+      <workItem from="1667293189083" duration="7458000" />
+      <workItem from="1667564808738" duration="7388000" />
     </task>
     <servers />
   </component>
