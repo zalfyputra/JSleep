@@ -1,5 +1,8 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
+import com.ZalfyPutraRezkyJSleepRJ.dbjson.*;
+import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
+
 import java.util.Date;
 
 public class Invoice extends Serializable

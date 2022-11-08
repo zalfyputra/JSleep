@@ -1,5 +1,7 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
+import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
+
 import java.util.ArrayList;
 import java.util.Date;
 

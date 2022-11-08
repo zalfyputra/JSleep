@@ -1,5 +1,7 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
+import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
+
 public class Voucher extends Serializable
 {
     public Type type;

@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
-import com.google.gson.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,8 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JSleep
 {
     public static void main(String[] args){
-        SpringApplication.run(JSleep.class, args);
         /*
+        JsonDBEgine.Run(JSleep.class);
+        SpringApplication.run(JSleep.class, args);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEgine.join()));
+        SpringApplication.run(JSleep.class, args);
         for(int i = 0; i < 10; i++){
             ThreadingObject thread = new ThreadingObject("Thread " + i);
             thread.start();

@@ -1,5 +1,7 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
+import com.ZalfyPutraRezkyJSleepRJ.Renter;
+import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,6 +10,8 @@ public class Account extends Serializable
     public String name;
     public String email;
     public String password;
+    public double balance;
+    public Renter renter;
     final public static String REGEX_EMAIL = "^[a-zA-Z0-9]+@[a-zA-Z]+([.]?[A-Za-z]+)*\\.[A-Za-z]+$";
     final public static String REGEX_PASSWORD = "^(?=.*a-z)(?=.*A-Z)(?=.*0-9)[a-zA-Z0-9]{8,}$";
 

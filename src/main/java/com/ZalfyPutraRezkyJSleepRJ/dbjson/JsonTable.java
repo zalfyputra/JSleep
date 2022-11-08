@@ -1,4 +1,4 @@
-package com.ZalfyPutraRezkyJSleepRJ;
+package com.ZalfyPutraRezkyJSleepRJ.dbjson;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
