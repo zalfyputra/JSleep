@@ -1,48 +1,111 @@
 package com.ZalfyPutraRezkyJSleepRJ.controller;
 
-import com.ZalfyPutraRezkyJSleepRJ.dbjson.*;
+import com.ZalfyPutraRezkyJSleepRJ.Account;
+import com.ZalfyPutraRezkyJSleepRJ.Algorithm;
+import com.ZalfyPutraRezkyJSleepRJ.Renter;
+import com.ZalfyPutraRezkyJSleepRJ.dbjson.JsonAutowired;
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.JsonTable;
-import com.ZalfyPutraRezkyJSleepRJ.*;
 import org.springframework.web.bind.annotation.*;
-import java.util.regex.Pattern;
 import java.util.regex.Matcher;
-import org.springframework.web.bind.annotation.*;
+import java.util.regex.Pattern;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 @RestController
 @RequestMapping("/account")
-public class AccountController{
-    /*
-    @JsonAutowired(filepath = "C:\\KULIAH\\SEMESTER 3\\OOP\\PRAKTIKUM\\JSleep\\src\\main\\java\\com\\ZalfyPutraRezkyJSleepRJ\\json\\account.json", value = Account.class)
-
-    final public static String REGEX_EMAIL = "^[a-zA-Z0-9]+@[a-zA-Z]+([.]?[A-Za-z]+)*\\.[A-Za-z]+$";
-    final public static String REGEX_PASSWORD = "^(?=.*a-z)(?=.*A-Z)(?=.*0-9)[a-zA-Z0-9]{8,}$";
-    public static final Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
-    public static final Pattern REGEX_PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
+public class AccountController implements BasicGetController<Account>
+{
+    public final static String REGEX_EMAIL = "^[a-zA-Z0-9 ][a-zA-Z0-9]+@[a-zA-Z.]+?\\.[a-zA-Z]+?$";
+    public final static String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
+    @JsonAutowired(value = Account.class, filepath = "src/json/account.json")
     public static JsonTable<Account> accountTable;
+    public final static Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
+    public final static Pattern REGEX_PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
 
-    @GetMapping
-    String index() {return "Account Page";}
-    public JsonTable<Account> getJsonTable(){
+    public JsonTable<Account> getJsonTable() {
         return accountTable;
     }
+
     @PostMapping("/login")
-    Account login(@RequestParam String email, @RequestParam String password){
-        return Algorithm.<Account>find(accountTable, account -> account.email.equals(email));
+    Account login(
+            @RequestParam String email,
+            @RequestParam String password
+    ){
+        String hashedPassword = null;
+        try{
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            hashedPassword = sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        final String hashFinal = hashedPassword;
+        return Algorithm.<Account>find(accountTable, pred -> email.equals(pred.email) && pred.password.equals(hashFinal));
     }
+
     @PostMapping("/register")
-    Account register(@RequestParam String name, @RequestParam String email, @RequestParam String password){
-        Matcher emailMatch = REGEX_PATTERN_EMAIL.matcher(email);
-        Matcher passwordMatch = REGEX_PATTERN_PASSWORD.matcher(password);
-    }
+    Account register(
+            @RequestParam String name,
+            @RequestParam String email,
+            @RequestParam String password
+    ){
+        Matcher emailMatcher = REGEX_PATTERN_EMAIL.matcher(email);
+        boolean emailStatus = emailMatcher.find();
+        Matcher passwordMatcher = REGEX_PATTERN_PASSWORD.matcher(password);
+        boolean passwordStatus = passwordMatcher.find();
 
+        if(passwordStatus && emailStatus && !name.isBlank()){
+            String hashedPassword = null;
+            try{
+                MessageDigest md = MessageDigest.getInstance("MD5");
+                md.update(password.getBytes());
+                byte[] bytes = md.digest();
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < bytes.length; i++) {
+                    sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+                }
+                hashedPassword = sb.toString();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+            final String hashFinal = hashedPassword;
+            accountTable.add(new Account(name,email,hashFinal));
+            return new Account(name, email, hashFinal);
+        }
+        else {
+            return null;
+        }
+    }
     @PostMapping("/{id}/registerRenter")
-    Renter registerRenter(@PathVariable int id, @RequestParam String username, @RequestParam String address, @RequestParam String phoneNumber){
-        return null;
+    Renter registerRenter(@PathVariable int id,
+                          @RequestParam String username,
+                          @RequestParam String address,
+                          @RequestParam String phoneNumber
+    ){
+        Account temp = Algorithm.<Account>find(accountTable,pred -> pred.id == id);
+        if(temp.renter == null && temp != null){
+            temp.renter = new Renter(username, address, phoneNumber);
+            return temp.renter;
+        }
+        else{
+            return null;
+        }
     }
-
     @PostMapping("/{id}/topUp")
-    boolean topUp(@PathVariable int id, @RequestParam double balance){
-        return false;
+    boolean topUp(@PathVariable int id,
+                  @RequestParam double balance
+    ){
+        Account account = Algorithm.<Account>find(accountTable, acc -> id == acc.id);
+        if (account != null){
+            account.balance += balance;
+            return true;
+        }else{
+            return false;
+        }
     }
-    */
 }

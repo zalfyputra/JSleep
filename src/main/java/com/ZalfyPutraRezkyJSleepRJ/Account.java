@@ -1,9 +1,6 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
-import com.ZalfyPutraRezkyJSleepRJ.Renter;
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Account extends Serializable
 {
@@ -12,31 +9,20 @@ public class Account extends Serializable
     public String password;
     public double balance;
     public Renter renter;
-    final public static String REGEX_EMAIL = "^[a-zA-Z0-9]+@[a-zA-Z]+([.]?[A-Za-z]+)*\\.[A-Za-z]+$";
-    final public static String REGEX_PASSWORD = "^(?=.*a-z)(?=.*A-Z)(?=.*0-9)[a-zA-Z0-9]{8,}$";
+    public static final String REGEX_EMAIL = "^[a-zA-Z0-9 ][a-zA-Z0-9]+@[a-zA-Z.]+?\\.[a-zA-Z]+?$";
+    public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
 
     public Account(String name, String email, String password){
+        super();
         this.name = name;
         this.email = email;
         this.password = password;
-    }
-    public boolean validate(){
-        Pattern emailName = Pattern.compile(REGEX_EMAIL);
-        Pattern passwordName = Pattern.compile(REGEX_PASSWORD);
-        if(email == null || password == null){
-            return false;
-        }
-        Matcher emailMatched = emailName.matcher(email);
-        Matcher passwordMatched = passwordName.matcher(password);
-        return (emailMatched.matches() && passwordMatched.matches());
+        this.balance = 0;
     }
     public String toString(){
         return "Account{name='" + this.name + "', email='" + this.email + "', password='" + this.password + "', id=" + this.id + "}";
     }
-    public Object write(){
-        return null;
-    }
-    public boolean read(String arr){
-        return false;
+    public boolean validate(){
+        return this.email.matches(REGEX_EMAIL) && this.password.matches(REGEX_PASSWORD);
     }
 }
