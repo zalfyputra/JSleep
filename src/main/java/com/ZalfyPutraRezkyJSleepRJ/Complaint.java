@@ -3,10 +3,10 @@ package com.ZalfyPutraRezkyJSleepRJ;
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
 
 /**
- * Write a description of class Complaint here.
+ * Class for complaint, it has date and description field.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Zalfy)
+ * @version (14-11-20222)
  */
 public class Complaint extends Serializable
 {

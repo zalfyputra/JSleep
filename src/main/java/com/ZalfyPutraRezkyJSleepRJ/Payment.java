@@ -3,7 +3,13 @@ package com.ZalfyPutraRezkyJSleepRJ;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
+/**
+ * Class invoice digunakan untuk menuliskan pembayaran,
+ * berisi pihak-pihak transaksi dan id room yang dibayarkan
+ *
+ * @author (Zalfy)
+ * @version (14-11-2022)
+ */
 public class Payment extends Invoice
 {
     public Date to;
@@ -57,10 +63,5 @@ public class Payment extends Invoice
     }
     public int getRoomId(){
         return roomId;
-    }
-    public String getTime(){
-        SimpleDateFormat sdfrm = new SimpleDateFormat("dd MMMM yyyy");
-        String strfrom = sdfrm.format(from.getTime());
-        return "Formatted Date: " + strfrom;
     }
 }

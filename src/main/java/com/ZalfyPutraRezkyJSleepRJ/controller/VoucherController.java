@@ -29,7 +29,7 @@ public class VoucherController implements BasicGetController<Voucher>
     boolean isUsed(
             @PathVariable int id
     ){
-            return false;
+        return false;
     }
 
     @GetMapping("/{id}/canApply")

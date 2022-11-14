@@ -4,7 +4,12 @@ import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
 
 import java.util.ArrayList;
 import java.util.Date;
-
+/**
+ * Class Room digunakan untuk membuat objek room
+ *
+ * @author (Zalfy)
+ * @version (14-11-2022)
+ */
 public class Room extends Serializable
 {
     public int size;
@@ -23,9 +28,9 @@ public class Room extends Serializable
         this.size = size;
         this.price = price;
         this.facility = facility;
-        this.bedType = BedType.SINGLE;
         this.city = city;
         this.address = address;
+        bedType = BedType.SINGLE;
     }
     public String toString(){
         return "id = " + this.id + "\n" + "name = " + this.name + "\n" + "size = " + this.size + "\n" + this.price + "\n" +

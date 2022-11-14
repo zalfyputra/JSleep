@@ -87,14 +87,13 @@ public class AccountController implements BasicGetController<Account>
                           @RequestParam String address,
                           @RequestParam String phoneNumber
     ){
-        Account temp = Algorithm.<Account>find(accountTable,pred -> pred.id == id);
-        if(temp.renter == null && temp != null){
-            temp.renter = new Renter(username, address, phoneNumber);
-            return temp.renter;
+        Account findAcc = Algorithm.<Account>find(getJsonTable(), obj -> obj.id == id);
+        if (findAcc.renter == null) {
+            Renter newRenter = new Renter(username, address, phoneNumber);
+            findAcc.renter = newRenter;
+            return newRenter;
         }
-        else{
-            return null;
-        }
+        return null;
     }
     @PostMapping("/{id}/topUp")
     boolean topUp(@PathVariable int id,

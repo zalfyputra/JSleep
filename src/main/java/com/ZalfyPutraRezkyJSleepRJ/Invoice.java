@@ -1,7 +1,12 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
-
+/**
+ * Class invoice digunakan untuk menuliskan rincian transaksi
+ *
+ * @author (Zalfy)
+ * @version (14-11-2022)
+ */
 public class Invoice extends Serializable
 {
     public PaymentStatus status = PaymentStatus.WAITING;

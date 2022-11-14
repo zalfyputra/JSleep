@@ -1,7 +1,7 @@
 package com.ZalfyPutraRezkyJSleepRJ.controller;
 
 import java.util.*;
-
+import com.ZalfyPutraRezkyJSleepRJ.Account;
 import com.ZalfyPutraRezkyJSleepRJ.Algorithm;
 import com.ZalfyPutraRezkyJSleepRJ.City;
 import com.ZalfyPutraRezkyJSleepRJ.Facility;
@@ -13,22 +13,26 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/room")
-public class RoomController implements BasicGetController<Room>
-{
-    @JsonAutowired(value = Room.class, filepath = "src/json/account.json")
+public class RoomController implements BasicGetController<Room> {
+
+    @JsonAutowired(value = Room.class, filepath = "src/json/room.json")
     public static JsonTable<Room> roomTable;
     @Override
-    public JsonTable<Room> getJsonTable(){
+    public JsonTable<Room> getJsonTable() {
         return roomTable;
     }
+
     @GetMapping("/{id}/renter")
-    List<Room> getRoomByRenter(
-            @PathVariable int id,
-            @RequestParam int page,
-            @RequestParam int pageSize
-    ){
-        return Algorithm.<Room>paginate(getJsonTable(), page, pageSize, Room -> Room.id == id);
+    List<Room> getRoomRenter
+            (
+                    @PathVariable int id,
+                    @RequestParam(defaultValue = "0") int page,
+                    @RequestParam(defaultValue = "5") int pageSize
+            )
+    {
+        return Algorithm.paginate(getJsonTable(), page, pageSize, room -> room.accountId == id);
     }
+
     @PostMapping("/create")
     public Room create(
             @RequestParam int accountId,
@@ -38,9 +42,13 @@ public class RoomController implements BasicGetController<Room>
             @RequestParam Facility facility,
             @RequestParam City city,
             @RequestParam String address
-    ){
-        Room room = new Room(accountId, name, size, new Price(price), facility, city, address);
-        roomTable.add(room);
-        return room;
+    )
+    {
+        if (Algorithm.<Account>exists(AccountController.accountTable, acc -> acc.id == accountId && acc.renter != null)) {
+            Room newRoom = new Room(accountId, name, size, new Price(price), facility, city, address);
+            roomTable.add(newRoom);
+            return newRoom;
+        }
+        return null;
     }
 }

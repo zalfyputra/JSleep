@@ -1,7 +1,12 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
-
+/**
+ * Class Account digunakan untuk membuat objek dengan attribute
+ * name, email, password dan melakukan mevalidasi regex
+ * @author (Zalfy)
+ * @version (14-11-2022)
+ */
 public class Account extends Serializable
 {
     public String name;

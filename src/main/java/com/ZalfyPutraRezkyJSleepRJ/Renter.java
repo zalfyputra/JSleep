@@ -1,7 +1,12 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
-
+/**
+ * Class renter digunakan untuk membuat objek dari penyewa room.
+ *
+ * @author (Zalfy)
+ * @version (14-11-2022)
+ */
 public class Renter extends Serializable
 {
     public String phoneNumber;

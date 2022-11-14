@@ -1,11 +1,8 @@
 package com.ZalfyPutraRezkyJSleepRJ;
-
-
 /**
- * Write a description of class City here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Enumeration class City
+ * @author (Zalfy)
+ * @version (14-11-2022)
  */
 public enum City
 {

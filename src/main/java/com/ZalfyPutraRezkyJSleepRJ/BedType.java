@@ -1,9 +1,8 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 /**
- * Write a description of class bEDtYPE here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Enumeration class BedType
+ * @author (Zalfy)
+ * @version (14-11-2022)
  */
 public enum BedType
 {

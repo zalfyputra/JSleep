@@ -6,7 +6,12 @@ import com.ZalfyPutraRezkyJSleepRJ.dbjson.JsonDBEngine;
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.JsonTable;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+/**
+ * PT Modul 7
+ *
+ * @author (Zalfy)
+ * @version (14-11-2022)
+ */
 @SpringBootApplication
 public class JSleep
 {
