@@ -1,14 +1,10 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 /**
- * Class invoice digunakan untuk menuliskan pembayaran,
- * berisi pihak-pihak transaksi dan id room yang dibayarkan
- *
- * @author (Zalfy)
- * @version (14-11-2022)
+ * Class payment for the payment that has been done by the account.
+ * @author Zalfy Putra Rezky
  */
 public class Payment extends Invoice
 {
@@ -56,11 +52,12 @@ public class Payment extends Invoice
         }
         return false;
     }
-    public String print(){
-        return "Room ID: " + this.roomId + "\n"
-             + "Payment from: " + this.from + "\n"
-             + "Payment to: " + this.to;
+
+    public String print() {
+        return "\nId: " + this.id + "\nBuyer: " + this.buyerId + "\nRenter: " + this.renterId +
+                "\nRoom ID: " + this.roomId + "\nFrom: " + this.from + "\nTo: " + to;
     }
+
     public int getRoomId(){
         return roomId;
     }

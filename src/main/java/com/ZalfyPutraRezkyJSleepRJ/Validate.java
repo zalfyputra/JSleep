@@ -2,10 +2,8 @@ package com.ZalfyPutraRezkyJSleepRJ;
 
 import java.util.ArrayList;
 /**
- * Class to filter the price
- *
- * @author (Zalfy)
- * @version (14-11-2022)
+ * Constructor for objects of class Validate
+ * @author Zalfy Putra Rezky
  */
 public class Validate
 {

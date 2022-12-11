@@ -2,6 +2,11 @@ package com.ZalfyPutraRezkyJSleepRJ.dbjson;
 
 import java.util.HashMap;
 
+/**
+ * Class Serializable to serialize ID
+ * @author Zalfy Putra Rezky
+ */
+
 public class Serializable implements Comparable<Serializable>
 {
     public final int id;

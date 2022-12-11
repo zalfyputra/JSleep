@@ -1,11 +1,10 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
+
 /**
- * Class invoice digunakan untuk menuliskan rincian transaksi
- *
- * @author (Zalfy)
- * @version (14-11-2022)
+ * Invoice object stores invoice / transaction details
+ * @author Zalfy Putra Rezky
  */
 public class Invoice extends Serializable
 {

@@ -1,25 +1,29 @@
 package com.ZalfyPutraRezkyJSleepRJ.controller;
 
-import java.text.ParseException;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.util.*;
+import java.text.*;
 import com.ZalfyPutraRezkyJSleepRJ.*;
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.JsonAutowired;
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.JsonTable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * Controller for Payment
+ * @author Zalfy Putra Rezky
+ */
 
 @RestController
 @RequestMapping("/payment")
 public class PaymentController implements BasicGetController<Payment>
 {
-    @JsonAutowired(value = Payment.class, filepath = "src/json/payment.json")
+    @JsonAutowired(value = Payment.class, filepath = "C:\\KULIAH\\SEMESTER 3\\OOP\\PRAKTIKUM\\JSleep\\src\\main\\java\\com\\ZalfyPutraRezkyJSleepRJ\\json\\payment.json")
     public static JsonTable<Payment> paymentTable;
+
+    @Override
     public JsonTable<Payment> getJsonTable(){
         return paymentTable;
     }
+
     @PostMapping("/accept")
     boolean accept(
             @RequestParam int id
@@ -77,10 +81,37 @@ public class PaymentController implements BasicGetController<Payment>
         }
         return null;
     }
+
     @PostMapping("/submit")
     public boolean submit(
             @RequestParam int id
     ){
         return false;
+    }
+
+    @GetMapping("/{id}/getMyOnGoingPayment")
+    public List<Payment> getOnGoingPayment(
+            @PathVariable int id
+    ){
+        Date date = new Date();
+        return Algorithm.collect(getJsonTable(), (Predicate<Payment>) pred->pred.buyerId == id &&(pred.status == Invoice.PaymentStatus.WAITING || pred.status == Invoice.PaymentStatus.SUCCESS) && pred.to.after(date));
+    }
+
+    @GetMapping("/{id}/getWaitingPayment")
+    List<Payment> waitingPayment(
+            @PathVariable int id,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5")int pageSize
+    ){
+        return Algorithm.paginate(getJsonTable(), page, pageSize, pred->pred.renterId == id && pred.status == Invoice.PaymentStatus.WAITING);
+    }
+
+    @GetMapping("/{id}/getCompletedPayment")
+    List<Payment> successPayment(
+            @PathVariable int id,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5")int pageSize
+    ){
+        return Algorithm.paginate(getJsonTable(), page, pageSize, pred->pred.renterId == id && (pred.status == Invoice.PaymentStatus.SUCCESS || pred.status == Invoice.PaymentStatus.FAILED));
     }
 }

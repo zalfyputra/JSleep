@@ -1,9 +1,13 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
 import java.util.*;
-
+/**
+ * Class Algorithm to collect, count, and find min and max from a list.
+ * @author Zalfy Putra Rezky
+ */
 public class Algorithm{
     private Algorithm(){
+
     }
 
     /** COLLECT */

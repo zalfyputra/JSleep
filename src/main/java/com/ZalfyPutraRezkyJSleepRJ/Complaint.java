@@ -3,10 +3,9 @@ package com.ZalfyPutraRezkyJSleepRJ;
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
 
 /**
- * Class for complaint, it has date and description field.
- *
- * @author (Zalfy)
- * @version (14-11-20222)
+ * An object to store complaint data.
+ * It has date and description field.
+ * @author Zalfy Putra Rezky
  */
 public class Complaint extends Serializable
 {

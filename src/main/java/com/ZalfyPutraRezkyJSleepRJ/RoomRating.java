@@ -1,10 +1,8 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
 /**
- * Write a description of class RoomRating here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * Enum for Room Rating
+ * @author Zalfy Putra Rezky
  */
 public enum RoomRating
 {

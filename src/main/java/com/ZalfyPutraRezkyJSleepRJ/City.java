@@ -1,8 +1,7 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 /**
  * Enumeration class City
- * @author (Zalfy)
- * @version (14-11-2022)
+ * @author Zalfy Putra Rezky
  */
 public enum City
 {

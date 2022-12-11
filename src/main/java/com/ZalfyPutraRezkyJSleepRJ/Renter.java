@@ -1,11 +1,13 @@
 package com.ZalfyPutraRezkyJSleepRJ;
 
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
- * Class renter digunakan untuk membuat objek dari penyewa room.
- *
- * @author (Zalfy)
- * @version (14-11-2022)
+ * Store data about Renter (people who rent the room)
+ * @author Zalfy Putra Rezky
  */
 public class Renter extends Serializable
 {
@@ -21,6 +23,12 @@ public class Renter extends Serializable
         this.address = address;
     }
     public boolean validate(){
-        return this.username.matches(REGEX_NAME) && this.phoneNumber.matches(REGEX_PHONE);
+        Pattern patternPhone = Pattern.compile(REGEX_PHONE);
+        Matcher matcherPhone = patternPhone.matcher(phoneNumber);
+        boolean matchPhone = matcherPhone.find();
+        Pattern patternName = Pattern.compile(REGEX_NAME);
+        Matcher matcherName = patternName.matcher(username);
+        boolean matchName = matcherName.find();
+        return matchName && matchPhone;
     }
 }

@@ -1,29 +1,34 @@
 package com.ZalfyPutraRezkyJSleepRJ.controller;
 
-import com.ZalfyPutraRezkyJSleepRJ.Account;
-import com.ZalfyPutraRezkyJSleepRJ.Algorithm;
-import com.ZalfyPutraRezkyJSleepRJ.Renter;
+import com.ZalfyPutraRezkyJSleepRJ.*;
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.JsonAutowired;
 import com.ZalfyPutraRezkyJSleepRJ.dbjson.JsonTable;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Controller for Account
+ * @author Zalfy Putra Rezky
+ */
+
 @RestController
 @RequestMapping("/account")
 public class AccountController implements BasicGetController<Account>
 {
-    public final static String REGEX_EMAIL = "^[a-zA-Z0-9 ][a-zA-Z0-9]+@[a-zA-Z.]+?\\.[a-zA-Z]+?$";
-    public final static String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
-    @JsonAutowired(value = Account.class, filepath = "src/json/account.json")
+    @JsonAutowired(value = Account.class, filepath = "C:\\KULIAH\\SEMESTER 3\\OOP\\PRAKTIKUM\\JSleep\\src\\main\\java\\com\\ZalfyPutraRezkyJSleepRJ\\json\\account.json")
     public static JsonTable<Account> accountTable;
+    public static final String REGEX_EMAIL = "^[a-zA-Z0-9]+@[a-zA-Z]+([.]?[a-zA-Z]+)*\\.[a-zA-Z]+(?!\\s)$";
+    public static final String REGEX_PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)[a-zA-Z\\d]{8,}(?!\\s)$";
     public final static Pattern REGEX_PATTERN_EMAIL = Pattern.compile(REGEX_EMAIL);
     public final static Pattern REGEX_PATTERN_PASSWORD = Pattern.compile(REGEX_PASSWORD);
 
-    public JsonTable<Account> getJsonTable() {
-        return accountTable;
+    @GetMapping
+    String index(){
+        return "Account Controller";
     }
 
     @PostMapping("/login")
@@ -45,7 +50,7 @@ public class AccountController implements BasicGetController<Account>
             e.printStackTrace();
         }
         final String hashFinal = hashedPassword;
-        return Algorithm.<Account>find(accountTable, pred -> email.equals(pred.email) && pred.password.equals(hashFinal));
+        return Algorithm.<Account>find(accountTable, pred -> pred.email.equals(email) && pred.password.equals(hashFinal));
     }
 
     @PostMapping("/register")
@@ -81,6 +86,7 @@ public class AccountController implements BasicGetController<Account>
             return null;
         }
     }
+
     @PostMapping("/{id}/registerRenter")
     Renter registerRenter(@PathVariable int id,
                           @RequestParam String username,
@@ -96,15 +102,30 @@ public class AccountController implements BasicGetController<Account>
         return null;
     }
     @PostMapping("/{id}/topUp")
-    boolean topUp(@PathVariable int id,
-                  @RequestParam double balance
+    boolean topUp(
+            @PathVariable int id,
+            @RequestParam double balance
     ){
         Account account = Algorithm.<Account>find(accountTable, acc -> id == acc.id);
         if (account != null){
             account.balance += balance;
             return true;
-        }else{
-            return false;
         }
+        return false;
+    }
+
+    @GetMapping("/{id}/getById")
+    public Account getById(@PathVariable int id){
+        return Algorithm.<Account>find(getJsonTable(), pred->pred.id == id);
+    }
+
+    @GetMapping("/getAllAccount")
+    public List<Account> getAllAccount(){
+        return Algorithm.collect(getJsonTable(), (Predicate<Account>) pred -> true);
+    }
+
+    @Override
+    public JsonTable<Account> getJsonTable() {
+        return accountTable;
     }
 }

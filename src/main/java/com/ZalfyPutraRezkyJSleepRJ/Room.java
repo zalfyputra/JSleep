@@ -5,10 +5,8 @@ import com.ZalfyPutraRezkyJSleepRJ.dbjson.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 /**
- * Class Room digunakan untuk membuat objek room
- *
- * @author (Zalfy)
- * @version (14-11-2022)
+ * Create object of Room
+ * @author Zalfy Putra Rezky
  */
 public class Room extends Serializable
 {
@@ -16,13 +14,13 @@ public class Room extends Serializable
     public int accountId;
     public String name;
     public String address;
-    public Facility facility;
+    public ArrayList<Facility> facility;
     public Price price;
     public BedType bedType;
     public City city;
     public ArrayList <Date> booked = new ArrayList <Date>();
     
-    public Room(int accountId, String name, int size, Price price, Facility facility, City city, String address){
+    public Room(int accountId, String name, int size, Price price, ArrayList<Facility> facility, City city, String address, BedType bedType){
         this.accountId = accountId;
         this.name = name;
         this.size = size;
@@ -30,16 +28,18 @@ public class Room extends Serializable
         this.facility = facility;
         this.city = city;
         this.address = address;
-        bedType = BedType.SINGLE;
+        this.bedType = bedType;
     }
     public String toString(){
-        return "id = " + this.id + "\n" + "name = " + this.name + "\n" + "size = " + this.size + "\n" + this.price + "\n" +
-        "facility = " + this.facility + "\n" + "bedType = " + this.bedType + "\n" + "city = " + this.city;
+        return "\nName: " + this.name + "\nbedType = " + this.bedType + "\nSize: " + this.size + this.price +
+                "\nFacility: " + this.facility + "\nCity: " + this.city + "\nAddress: " + this.address;
     }
+    /**
     public Object write(){
         return null;
     }
     public boolean read(String arr){
         return false;
     }
+     */
 }
