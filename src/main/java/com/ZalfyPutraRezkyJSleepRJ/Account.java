@@ -20,7 +20,6 @@ public class Account extends Serializable
     public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
 
     public Account(String name, String email, String password){
-        super();
         this.name = name;
         this.email = email;
         this.password = password;
@@ -28,7 +27,7 @@ public class Account extends Serializable
     }
 
     public String toString(){
-        return "Account{name='" + this.name + "', email='" + this.email + "', password='" + this.password + "', id=" + this.id + "}";
+        return "Account{ + \nname='" + this.name + "', \nemail='" + this.email + "', \npassword='" + this.password + "', \nid=" + this.id + "}";
     }
 
     public Object write(){
